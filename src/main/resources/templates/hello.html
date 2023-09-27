@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Main page</title>
+    <title>hello</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,31 +35,11 @@
     </style>
 </head>
 <body>
+<h1>hello <a th:text="${name}"/>! </h1>
+<br>
 <div class="button-container">
     <a class="button-link" th:href="@{/}">
-        <button class="button">Main Page</button>
-    </a>
-
-    <a class="button-link" th:href="@{/hello}">
-        <button class="button">Hello page</button>
-    </a>
-    <a class="button-link" th:href="@{/user}">
-        <button class="button">About me</button>
-    </a>
-
-    <a class="button-link" th:href="@{/admin}">
-        <button class="button">Admin Panel</button>
-    </a>
-    <a class="button-link" th:href="@{/moderate}">
-        <button class="button">Moderator Panel</button>
-    </a>
-</div>
-<div class="button-container">
-    <a class="button-link" th:href="@{/login}">
-        <button class="button">Login</button>
-    </a>
-    <a class="button-link" th:href="@{/logout}">
-        <button class="button">Logout</button>
+        <button class="button">Back</button>
     </a>
 </div>
 </body>

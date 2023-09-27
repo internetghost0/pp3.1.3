@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Main page</title>
+    <title>Moderator Panel</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,6 +16,28 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+        }
+
+        table {
+            margin: 20px auto 10px; /* Added margin-bottom to create space */
+            border-collapse: collapse;
+            width: 80%;
+            border: 2px solid #040609;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #040609;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
 
         .button-container {
@@ -35,6 +57,25 @@
     </style>
 </head>
 <body>
+<h1 th:align="center">Moderator Panel</h1>
+<table th:align="center" th:border="2">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>username</th>
+        <th>roles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.rolesSet}"></td>
+    </tr>
+    </tbody>
+</table>
 <div class="button-container">
     <a class="button-link" th:href="@{/}">
         <button class="button">Main Page</button>

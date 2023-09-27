@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Create User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #040609;
+            color: #fff;
+            padding: 20px;
+        }
+
+        form {
+            margin: 20px;
+            text-align: center;
+
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select,
+        input {
+            width: 40%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        select {
+            text-align: center;
+        }
+
+        button[type="submit"] {
+            background-color: #040609;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Create User</h1>
+<form method="post" th:action="@{/admin/new}" th:object="${user}">
+    <label for="name">Name:</label>
+    <br>
+    <input id="name" name="name" required th:field="*{name}" type="text">
+    <br>
+    <label for="username">Username:</label>
+    <br>
+    <input id="username" name="username" required th:field="*{username}" type="text">
+    <br>
+    <label for="password">Password:</label>
+    <br>
+    <input id="password" name="password" required th:field="*{password}" type="password">
+    <br>
+
+    <label for="role">Role:</label>
+    <br>
+    <select id="role" name="role">
+        <option value="ROLE_USER">User</option>
+        <option value="ROLE_MODERATOR">Moderator</option>
+        <option value="ROLE_ADMIN">Admin</option>
+    </select>
+    <br>
+    <button type="submit">Create</button>
+</form>
+<a class="back-link" th:href="@{/admin}">Back to User List</a>
+</body>
+</html>

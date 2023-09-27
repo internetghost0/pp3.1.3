@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Main page</title>
+    <title>Admin Panel</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,6 +16,28 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+        }
+
+        table {
+            margin: 20px auto 10px; /* Added margin-bottom to create space */
+            border-collapse: collapse;
+            width: 80%;
+            border: 2px solid #040609;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #040609;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
 
         .button-container {
@@ -35,6 +57,45 @@
     </style>
 </head>
 <body>
+<h1 th:align="center">Admin Panel</h1>
+<table th:align="center" th:border="2">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>username</th>
+        <th>roles</th>
+        <th>password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.rolesSet}"></td>
+        <td th:text="${user.password}"></td>
+        <td>
+            <a class="button-link" th:href="@{/admin/edit/{id}(id=${user.id})}">
+                <button class="button">Edit</button>
+            </a>
+        </td>
+        <td>
+            <a class="button-link" th:href="@{/admin/delete/{id}(id=${user.id})}">
+                <button class="button">Delete</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="button-container">
+    <a class="button-link" th:href="@{/admin/new}">
+        <button class="button">New User</button>
+    </a>
+</div>
+<br>
 <div class="button-container">
     <a class="button-link" th:href="@{/}">
         <button class="button">Main Page</button>
